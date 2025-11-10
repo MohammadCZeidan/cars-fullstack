@@ -18,8 +18,8 @@ function getCarByID(){
     return;
 }
 
-getCarById();
-
+//getCarById();
+getCars();
 
 //ToDO: 
 //transform getCarByID to getCars()
