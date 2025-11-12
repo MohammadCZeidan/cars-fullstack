@@ -2,7 +2,7 @@
 require_once("./services/ResponseService.php");
 
 $base_dir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');//http://localhost/phpmyadmin/
-$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);/CARS/AHMAD/ZEHRA
+$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);//CARS/AHMAD/ZEHRA
 
 if (strpos($request /*http://localhost/phpmyadmin/*/, $base_dir/*http://localhost/phpmyadmin/*/) === 0) {
     $request = substr($request, strlen($base_dir));
