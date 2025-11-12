@@ -1,30 +1,29 @@
 <?php
-include("../models/Car.php");
-include("../connection/connection.php");
-include("../services/ResponseService.php");
+require_once(__DIR__ . "/../models/Car.php");
+require_once(__DIR__ . "/../connection/connection.php");
+require_once(__DIR__ . "/../services/ResponseService.php");
 
-function getCarByID(){
-    global $connection;
+class CarController {
 
-    if(isset($_GET["id"])){
-        $id = $_GET["id"];
-    }else{
-        echo ResponseService::response(500, "ID is missing");
+    function getCarByID(){
+        global $connection;
+
+        if(isset($_GET["id"])){
+            $id = $_GET["id"];
+        }else{
+            echo ResponseService::response(500, "ID is missing");
+            return;
+        }
+       
+        //not allowed to write logic in my controller!!!
+        //$car = Car::find($connection, $id);
+        //$car = $car ? $car->toArray() : [];
+        $car = CarService::findCarByID($id);
+        echo ResponseService::response(200, $car);
         return;
     }
 
-    $car = Car::find($connection, $id);
-    echo ResponseService::response(200, $car->toArray());
-    return;
+    //try catch 
 }
-
-//getCarById();
-getCars();
-
-//ToDO: 
-//transform getCarByID to getCars()
-//if the id is set? then we retrieve the specific car 
-// if no ID, then we retrieve all the cars
-
 
 ?>
